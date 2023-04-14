@@ -10,6 +10,7 @@ namespace TraversalCoreProject.Models
     {
         [Required(ErrorMessage = "Lütfen adınızı giriniz")]
         public string Name { get; set; }
+
         [Required(ErrorMessage = "Lütfen soyadınızı giriniz")]
         public string Surname { get; set; }
 

@@ -15,7 +15,7 @@ namespace TraversalCoreProject.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
 
-    
+
         public LoginController(UserManager<AppUser> userManager)
         {
             _userManager = userManager;
@@ -30,6 +30,7 @@ namespace TraversalCoreProject.Controllers
         [HttpPost]
         public async Task<IActionResult> SignUp(UserRegisterViewModel p)
         {
+
             AppUser appUser = new AppUser()
             {
                 Name = p.Name,
@@ -37,12 +38,13 @@ namespace TraversalCoreProject.Controllers
                 Email = p.Mail,
                 UserName = p.Username
             };
+
             if (p.Password == p.ConfirmPassword)
             {
                 var result = await _userManager.CreateAsync(appUser, p.Password);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("SignIn");
+                    return RedirectToAction("SignIn", "Login");
                 }
                 else
                 {
@@ -52,10 +54,10 @@ namespace TraversalCoreProject.Controllers
                     }
                 }
             }
-            return View(p);
+
+
+            return View();
         }
-
-
 
 
         [HttpGet]
