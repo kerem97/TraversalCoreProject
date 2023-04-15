@@ -3,12 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DataAccessLayer.Migrations
 {
-    public partial class mig_add_reservation_entity : Migration
+    public partial class mig_add_reservation_entity3 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Reservation",
+                name: "Reservations",
                 columns: table => new
                 {
                     ReservationID = table.Column<int>(type: "int", nullable: false)
@@ -22,9 +22,9 @@ namespace DataAccessLayer.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Reservation", x => x.ReservationID);
+                    table.PrimaryKey("PK_Reservations", x => x.ReservationID);
                     table.ForeignKey(
-                        name: "FK_Reservation_AspNetUsers_AppUserID",
+                        name: "FK_Reservations_AspNetUsers_AppUserID",
                         column: x => x.AppUserID,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -32,15 +32,15 @@ namespace DataAccessLayer.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reservation_AppUserID",
-                table: "Reservation",
+                name: "IX_Reservations_AppUserID",
+                table: "Reservations",
                 column: "AppUserID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Reservation");
+                name: "Reservations");
         }
     }
 }

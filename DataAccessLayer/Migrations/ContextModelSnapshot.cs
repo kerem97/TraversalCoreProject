@@ -407,7 +407,7 @@ namespace DataAccessLayer.Migrations
 
                     b.HasIndex("AppUserID");
 
-                    b.ToTable("Reservation");
+                    b.ToTable("Reservations");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.SubAbout", b =>

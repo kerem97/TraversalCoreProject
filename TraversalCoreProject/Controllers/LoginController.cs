@@ -11,7 +11,8 @@ using TraversalCoreProject.Models;
 namespace TraversalCoreProject.Controllers
 {
     [AllowAnonymous]
-    [Route("Login/[controller]/[action]")]
+    //[Route("Login/[controller]/[action]")]
+
     public class LoginController : Controller
     {
         private readonly UserManager<AppUser> _userManager;

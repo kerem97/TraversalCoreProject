@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230415144205_mig_add_reservation_entity")]
-    partial class mig_add_reservation_entity
+    [Migration("20230415165057_mig_add_reservation_entity3")]
+    partial class mig_add_reservation_entity3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -409,7 +409,7 @@ namespace DataAccessLayer.Migrations
 
                     b.HasIndex("AppUserID");
 
-                    b.ToTable("Reservation");
+                    b.ToTable("Reservations");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.SubAbout", b =>
