@@ -19,9 +19,9 @@ namespace BusinessLayer.Concrete
             _reservationDal = reservationDal;
         }
 
-        public List<Reservation> GetListApprovalReservation(int id)
+        public List<Reservation> TGetListReservationByWaitApproval(int id)
         {
-            return _reservationDal.GetListByFilter(x => x.AppUserID == id);
+            return _reservationDal.GetListReservationByWaitApproval(id);
         }
 
         public void TDelete(Reservation t)
@@ -50,6 +50,16 @@ namespace BusinessLayer.Concrete
         public void TUpdate(Reservation t)
         {
             _reservationDal.Update(t);
+        }
+
+        public List<Reservation> TGetListReservationByConfirmed(int id)
+        {
+            return _reservationDal.GetListReservationByConfirmed(id);
+        }
+
+        public List<Reservation> TGetListReservationByPrevious(int id)
+        {
+            return _reservationDal.GetListReservationByPrevious(id);
         }
     }
 }
