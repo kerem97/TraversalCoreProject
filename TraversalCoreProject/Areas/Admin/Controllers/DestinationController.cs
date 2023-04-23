@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
@@ -12,11 +13,16 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
     [Area("Admin")]
     public class DestinationController : Controller
     {
-        DestinationManager dm = new DestinationManager(new EfDestinationDal());
+        private readonly IDestinationService _destinationService;
+
+        public DestinationController(IDestinationService destinationService)
+        {
+            _destinationService = destinationService;
+        }
 
         public IActionResult Index()
         {
-            var values = dm.TGetList();
+            var values = _destinationService.TGetList();
             return View(values);
         }
 
@@ -28,13 +34,13 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult AddDestination(Destination destination)
         {
-            dm.TInsert(destination);
+            _destinationService.TInsert(destination);
             return RedirectToAction("Index");
         }
         public IActionResult DeleteDestination(int id)
         {
-            var values = dm.TGetByID(id);
-            dm.TDelete(values); 
+            var values = _destinationService.TGetByID(id);
+            _destinationService.TDelete(values); 
             return RedirectToAction("Index");
 
         }
@@ -42,14 +48,14 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult UpdateDestination(int id)
         {
-            var values = dm.TGetByID(id);
+            var values = _destinationService.TGetByID(id);
             return View(values);
         }
 
         [HttpPost]
         public IActionResult UpdateDestination(Destination destination)
         {
-            dm.TUpdate(destination);
+            _destinationService.TUpdate(destination);
             return RedirectToAction("Index");
         }
     }
