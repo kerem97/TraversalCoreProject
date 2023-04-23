@@ -34,7 +34,7 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
         public IActionResult DeleteDestination(int id)
         {
             var values = dm.TGetByID(id);
-            dm.TDelete(values);
+            dm.TDelete(values); 
             return RedirectToAction("Index");
 
         }
