@@ -11,7 +11,7 @@ namespace BusinessLayer.Concrete
 {
     public class FeatureManager : IFeatureService
     {
-        IFeatureDal _featureDal;
+        private readonly IFeatureDal _featureDal;
 
         public FeatureManager(IFeatureDal featureDal)
         {

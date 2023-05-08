@@ -11,7 +11,7 @@ namespace BusinessLayer.Concrete
 {
     public class GuideManager : IGuideService
     {
-        IGuideDal _guideDal;
+        private readonly IGuideDal _guideDal;
 
         public GuideManager(IGuideDal guideDal)
         {
@@ -25,7 +25,7 @@ namespace BusinessLayer.Concrete
 
         public Guide TGetByID(int id)
         {
-           return _guideDal.GetByID(id);
+            return _guideDal.GetByID(id);
         }
 
         public List<Guide> TGetList()

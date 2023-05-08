@@ -11,7 +11,7 @@ namespace BusinessLayer.Concrete
 {
     public class SubAboutManager : ISubAboutService
     {
-        ISubAboutDal _subAboutDal;
+        private readonly ISubAboutDal _subAboutDal;
 
         public SubAboutManager(ISubAboutDal subAboutDal)
         {

@@ -11,7 +11,7 @@ namespace BusinessLayer.Concrete
 {
     public class DestinationManager : IDestinationService
     {
-        IDestinationDal _destinationDal;
+        private readonly IDestinationDal _destinationDal;
 
         public DestinationManager(IDestinationDal destinationDal)
         {

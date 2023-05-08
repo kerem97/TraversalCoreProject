@@ -12,7 +12,7 @@ namespace BusinessLayer.Concrete
 {
     public class AboutManager : IAboutService
     {
-        IAboutDal _aboutDal;
+        private readonly IAboutDal _aboutDal;
 
         public AboutManager(IAboutDal aboutDal)
         {
