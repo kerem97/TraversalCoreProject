@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,28 +37,32 @@ namespace TraversalCoreProject
             services.AddDbContext<Context>();
             services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<Context>();
 
+            services.AddLogging(x =>
+            {
+                x.ClearProviders();
+                x.SetMinimumLevel(LogLevel.Debug);
+                x.AddDebug();
+            });
+
 
             services.ContainerDependencies();
 
-
-
-
-
             services.AddControllersWithViews();
 
-
-
-
             services.AddMvc(config =>
-            {
-                var policy = new AuthorizationPolicyBuilder()
-                .RequireAuthenticatedUser()
-                .Build();
-                config.Filters.Add(new AuthorizeFilter(policy));
-            });
+               {
+                   var policy = new AuthorizationPolicyBuilder()
+                   .RequireAuthenticatedUser() 
+                   .Build();
+                   config.Filters.Add(new AuthorizeFilter(policy));
+               });
             services.AddMvc();
 
-
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.Cookie.HttpOnly = true;
+                options.LoginPath = "/Login/SignIn/";
+            });
 
         }
 
@@ -74,7 +79,7 @@ namespace TraversalCoreProject
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            app.UseStatusCodePagesWithReExecute("/ErrorPage/Error404/","?code={0}");
+            app.UseStatusCodePagesWithReExecute("/ErrorPage/Error404/", "?code={0}");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseAuthentication();

@@ -20,11 +20,19 @@ namespace TraversalCoreProject.Controllers
 
         public IActionResult Index()
         {
+            _logger.LogInformation("Deneme");
             return View();
         }
 
         public IActionResult Privacy()
         {
+            _logger.LogInformation("Privacy");
+            return View();
+        }
+        public IActionResult Test()
+        {
+
+            _logger.LogInformation("Test");
             return View();
         }
 
