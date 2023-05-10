@@ -28,14 +28,14 @@
 
             @if (x.Status == true)
             {
-                <td><a href="#" class="btn btn-outline-warning">Pasif Yap</a></td>
+                <td><a href="/Admin/Guide/ChangeStatusToFalse/@x.GuideID" class="btn btn-outline-warning">Pasif Yap</a></td>
             }
             else
             {
-                <td><a href="#" class="btn btn-outline-primary">Aktif Yap</a></td>
+                <td><a href="/Admin/Guide/ChangeStatusToTrue/@x.GuideID" class="btn btn-outline-primary">Aktif Yap</a></td>
             }
 
-            <td><a href="#" class="btn btn-outline-secondary">Düzenle</a></td>
+            <td><a href="/Admin/Guide/EditGuide/@x.GuideID" class="btn btn-outline-secondary">Düzenle</a></td>
         </tr>
     }
 </table>
