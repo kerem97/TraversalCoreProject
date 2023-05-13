@@ -48,13 +48,14 @@ namespace TraversalCoreProject
             services.AddDbContext<Context>();
             services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<Context>();
 
-       
+
 
 
             services.ContainerDependencies();
 
             services.AddAutoMapper(typeof(Startup));
-            services.AddTransient<IValidator<AnnouncementAddDTOs>, AnnouncementValidator>();
+            services.CustomValidator();
+
 
             services.AddControllersWithViews().AddFluentValidation();
 

@@ -1,4 +1,4 @@
-﻿@model List<TraversalCoreProject.Areas.Admin.Models.AnnouncementListViewModel>
+﻿@model List<DTOLayer.DTOs.AnnouncementDTOs.AnnouncementListDto>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,15 +13,19 @@
         <th>Başlık</th>
         <th>İçerik</th>
         <th>Detaylar</th>
+        <th>Sil</th>
     </tr>
     @foreach (var x in Model)
     {
         <tr>
-            <td>@x.ID</td>
+            <td>@x.AnnouncementID</td>
             <td>@x.Title</td>
             <td>@x.Content</td>
-            <td><a href="#" class="btn btn-outline-dark">Detaylar</a></td>
+            <td><a href="/Admin/Announcement/UpdateAnnocuncement/@x.AnnouncementID/" class="btn btn-outline-dark">Detaylar</a></td>
+            <td><a href="/Admin/Announcement/DeleteAnnouncement/@x.AnnouncementID/" class="btn btn-outline-danger">Sil</a></td>
         </tr>
     }
 </table>
+<br />
+<a class="btn btn-outline-dark" href="/Admin/Announcement/AddAnnouncement/">Yeni Duyuru</a>
 
