@@ -34,3 +34,4 @@ namespace DataAccessLayer.Concrete
         public DbSet<Account> Accounts { get; set; }
     }
 }
+///soft-ui-dashboard-main/assets/img/kal-visuals-square.jpg
