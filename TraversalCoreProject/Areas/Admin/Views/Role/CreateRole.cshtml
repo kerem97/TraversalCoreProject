@@ -1,0 +1,14 @@
+﻿@model CreateRoleViewModel
+@{
+    ViewData["Title"] = "CreateRole";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Yeni Rol Oluşturma Sayfası</h1>
+<br />
+<form method="post">
+    <label>Rol Adı</label>
+    <input type="text" class="form-control" asp-for="RoleName" />
+    <br />
+    <button class="btn btn-outline-dark">Oluştur</button>
+</form> 

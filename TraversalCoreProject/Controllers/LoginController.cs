@@ -76,7 +76,7 @@ namespace TraversalCoreProject.Controllers
                 var result = await _signInManager.PasswordSignInAsync(model.username, model.password, false, false);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Profile", new { area = "Member" });
+                    return RedirectToAction("PathFinder", "Login");
                 }
                 else
                 {
@@ -85,6 +85,26 @@ namespace TraversalCoreProject.Controllers
             }
             return View();
         }
+
+        public IActionResult PathFinder()
+        {
+            if (User.IsInRole("Admin"))
+            {
+                return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
+            }
+            if (User.IsInRole("Member"))
+            {
+                return RedirectToAction("Index", "Dashboard", new { area = "Member" });
+            }
+            return View();
+        }
+        public async Task<IActionResult> Logout()
+        {
+
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("SignIn", "Login");
+        }
+
 
     }
 }

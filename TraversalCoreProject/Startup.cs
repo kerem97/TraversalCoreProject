@@ -82,9 +82,11 @@ namespace TraversalCoreProject
                });
             services.AddMvc();
 
+       
+
             services.ConfigureApplicationCookie(options =>
             {
-                options.Cookie.HttpOnly = true;
+              
                 options.LoginPath = "/Login/SignIn/";
             });
 
