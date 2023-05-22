@@ -12,5 +12,7 @@ namespace DataAccessLayer.Abstract
         public Destination GetDestinationWithGuide(int id);
         public List<Destination> GetLast4Destinations();
 
+
+
     }
 }
